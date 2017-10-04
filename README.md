@@ -1,29 +1,10 @@
 # EyeRecToo
 
-EyeRecToo is a second-generation open-source software for head-mounted eye trackers.
-Its main raison d'être is to provide an open platform to replace the data
-acquisition functionality from eye-tracker vendors' software, which typically
-are expensive, closed-source, and geared toward their own devices.
-It deprecates [EyeRec](https://www-ti.informatik.uni-tuebingen.de/santini/EyeRec).
+Original GitLab link: https://atreus.informatik.uni-tuebingen.de/santini/EyeRecToo
 
-For data analysis functionality replacement, we recommend
-[Eyetrace](http://www.ti.uni-tuebingen.de/Eyetrace.1751.0.html).
-
->*Why the name?*
->
->Originally, EyeRec was a phonetical play on words and the
->eye-related functionality as in **I rec**[ord].
->EyeRecToo adds on the word play: It is the version **two** and, similar to EyeRec, records **too**.
->All bad puns are intended :-)
-
-## Supported Platforms
-
-- Windows 64 bits
-
->Nonetheless, it also has been previously ran on Ubuntu 16.04 (64 bits) and a
->couple other Linux distributions.
->It's also possible to get EyeRecToo running on 32 bits platforms, but no Pupil
->eye tracker supported is available.
+This is the PRL fork of EyeRecToo, a gaze tracking software suite. This software, along with the UVC Engine,
+enables eye and gaze tracking with the Pupil Labs headset. Changes have been made to allow building an running on 
+Ubuntu 14.04.
 
 ## Supported Devices
 
@@ -61,24 +42,6 @@ and the uvc engine is still in beta.*
 - [Logitech C525](http://www.logitech.com/en-us/product/hd-webcam-c525)
 - [Logitech QuickCam PRO 9000](http://support.logitech.com/en_us/product/quickcam-pro-9000)
 - [Logitech QuickCam Express](http://support.logitech.com/en_us/product/quickcam-express)
-
-
-## Running
-
-Binaries can be downloaded [here](www.ti.uni-tuebingen.de/perception).
-
-Prior to running, make sure you have the Visual C++ 2015 x64 run-time
-components installed. If not, you can install them by running
-vcredist_x64.exe or
-[downloading the installer directly from Microsoft](https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe).
-
-**NOTE:** Additionally, you may need to install drivers to access your eye tracker
-cameras:
-
-1. Dikablis eye trackers require the
-[VRMagic drivers](https://www.vrmagic.com/imaging/downloads/) (make sure you
-have the 64 bits version)
-2. For Pupil eye trackers, check the [Pupil Labs' guide](https://github.com/pupil-labs/pupil/wiki/Windows-Driver-Setup).
 
 ## Developing
 
