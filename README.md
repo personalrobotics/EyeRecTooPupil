@@ -1,102 +1,45 @@
 # EyeRecToo
 
-EyeRecToo is a second-generation open-source software for head-mounted eye trackers.
-Its main raison d'être is to provide an open platform to replace the data
-acquisition functionality from eye-tracker vendors' software, which typically
-are expensive, closed-source, and geared toward their own devices.
-It deprecates [EyeRec](https://www-ti.informatik.uni-tuebingen.de/santini/EyeRec).
+Original GitLab link: https://atreus.informatik.uni-tuebingen.de/santini/EyeRecToo
 
-For data analysis functionality replacement, we recommend
-[Eyetrace](http://www.ti.uni-tuebingen.de/Eyetrace.1751.0.html).
+This is the PRL fork of EyeRecToo, a gaze tracking software suite. This software, along with the UVC Engine,
+enables eye and gaze tracking with the Pupil Labs headset. Changes have been made to allow building and running on 
+Ubuntu 14.04. This repo assumes use of the Pupil Labs headset.
 
->*Why the name?*
->
->Originally, EyeRec was a phonetical play on words and the
->eye-related functionality as in **I rec**[ord].
->EyeRecToo adds on the word play: It is the version **two** and, similar to EyeRec, records **too**.
->All bad puns are intended :-)
+## Dependencies and Building
 
-## Supported Platforms
+Running EyeRecToo on Ubuntu with the Pupil Labs headset requires the following dependencies:
 
-- Windows 64 bits
+1. openCV 3.2.0
+2. libjpeg-turbo
+3. uvcengine
 
->Nonetheless, it also has been previously ran on Ubuntu 16.04 (64 bits) and a
->couple other Linux distributions.
->It's also possible to get EyeRecToo running on 32 bits platforms, but no Pupil
->eye tracker supported is available.
+For help on installing dependencies openCV and libjpeg-turbo, see Pupil Lab’s official Linux developer guide here:
+https://docs.pupil-labs.com/#linux-dependencies.
 
-## Supported Devices
+**Note**: You may need to edit the .pro file to point to the install locations of these dependencies. 
+I’m working on making this process smoother.
 
-Theoretically, cameras using DirectShow (on Windows) and v4l2 (on Linux)
-should work out of the box.
+To run the **Pupil Labs** headset, you will need to install the UVC Engine plugin first :
+https://github.com/personalrobotics/uvc_engine_pupil. This is dependency 3 listed above.
 
-*Tested Eye Trackers:*
-- Dikablis Essential / Pro (see [Ergoneers](http://www.ergoneers.com))
-- Pupil DIY (see [Pupil Labs](https://pupil-labs.com/))
-- Eivazi's microscope add-on (see [Eivazi, S et al.  2016](http://ieeexplore.ieee.org/document/7329925/))
-- Pupil Eye Tracker (see [Pupil Labs](https://pupil-labs.com/store/))
-**NOTE:** Early support for Pupil Labs' custom cameras is provided
-through the [UVC Engine](https://atreus.informatik.uni-tuebingen.de/santini/uvcengine).
-This support was tested with a binocular Pupil headset (in total three cameras) with the
-following configurations:
-1. Eyes (320 x 240 @120fps) Field (1280 x 720 @30fps)
-2. Eyes (640 x 480 @120fps) Field (1280 x 720 @30fps)
-3. Eyes (640 x 480 @120fps) Field (640 x 480 @120fps)
+**Note**: Building the UVC Engine from the above repo will install it as a Qt plugin. If 
+the make process finishes, you’re probably good to go.
 
-Other configurations also work but were not extensively used.
-
-*Please note that the camera driver, libusb, and libuvc can crash if the headset is unplugged
-while the cameras are streaming. These are still work in progress for Windows,
-and the uvc engine is still in beta.*
-
-
-*Tested webcams:*
-- [Playstation Eye](https://en.wikipedia.org/wiki/PlayStation_Eye)
-- [Microsoft LifeCam HD-3000](https://www.microsoft.com/accessories/en-us/products/webcams/lifecam-hd-3000/t3h-00011)
-- [Microsoft LifeCam HD-5000](https://www.microsoft.com/accessories/en-us/d/lifecam-hd-5000)
-- [Microsoft LifeCam HD-6000](https://www.microsoft.com/accessories/en-us/d/lifecam-hd-6000-for-notebooks)
-- [Microsoft LifeCam VX-1000](https://www.microsoft.com/accessories/en-us/d/lifecam-vx-1000)
-- [Logitech C920](http://www.logitech.com/en-us/product/hd-pro-webcam-c920)
-- [Logitech C510](http://support.logitech.com/en_us/product/hd-webcam-c510)
-- [Logitech C525](http://www.logitech.com/en-us/product/hd-webcam-c525)
-- [Logitech QuickCam PRO 9000](http://support.logitech.com/en_us/product/quickcam-pro-9000)
-- [Logitech QuickCam Express](http://support.logitech.com/en_us/product/quickcam-express)
-
+Also remember that you’ll need Qt 5.7.0 to actually build and run EyeRecToo, just like the UVC Engine.
 
 ## Running
 
-Binaries can be downloaded [here](www.ti.uni-tuebingen.de/perception).
+Once you’ve finished the above, you just need to add the locations of your openCV and libjpeg-turbo 
+to your $LD_LIBRARY_PATH environment variable. You also need to run the built EyeRecToo executable 
+with **sudo** so libusb can actually read the USB device names- otherwise, things won’t work.
 
-Prior to running, make sure you have the Visual C++ 2015 x64 run-time
-components installed. If not, you can install them by running
-vcredist_x64.exe or
-[downloading the installer directly from Microsoft](https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe).
-
-**NOTE:** Additionally, you may need to install drivers to access your eye tracker
-cameras:
-
-1. Dikablis eye trackers require the
-[VRMagic drivers](https://www.vrmagic.com/imaging/downloads/) (make sure you
-have the 64 bits version)
-2. For Pupil eye trackers, check the [Pupil Labs' guide](https://github.com/pupil-labs/pupil/wiki/Windows-Driver-Setup).
-
-## Developing
-
-The EyeRecToo official repository is located at:
-[https://atreus.informatik.uni-tuebingen.de/santini/EyeRecToo](https://atreus.informatik.uni-tuebingen.de/santini/EyeRecToo)
-
-The particulars of the test build system we use are:
-- QtCreator 4.0.3
-- Qt 5.7.0 (MSVC 2015, 64 bit)
-- Visual Studio 2015
-- Microsoft Windows 8.1
-
-All libraries/includes (for Windows 64 bits) should be in the deps directory already; to build:
-1. Install Visual Studio 2015
-2. Install Qt 5.7.0 (and Qt Creator)
-3. Open the project
-4. Run qmake and build
-5. Before running, add deps/runtime/Release or deps/runtime/Debug to your PATH.
+Also, you might see two entries for each Pupil Camera (so 6 total). Don’t freak over this. One of the 
+two entries uses GStreamer, and will probably crash. The other one is using the UVC Engine. Pick that one.
 
 *Both Release and Debug versions are functional although the latter may run at a low sampling rates.*
+
+## Questions
+
+Email sniyaz@cs.washington.edu.
 
