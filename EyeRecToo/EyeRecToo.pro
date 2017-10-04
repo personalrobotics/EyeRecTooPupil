@@ -81,8 +81,8 @@ INCLUDEPATH += "$${TOP}/src"
 
 Debug:DBG_SUFFIX = "d"
 
-# (sniyaz): You'll need to point this to your own OpenCV install.
-OPENCVPATH="/usr/local/opencv"
+# (sniyaz): You *may* to point this to your own OpenCV install. Try the instruction on the repo and see.
+OPENCVPATH="/usr/local/"
 INCLUDEPATH += $${OPENCVPATH}/include/
 win32:contains(QMAKE_HOST.arch, x86_64) {
     LIBS += "-L$${OPENCVPATH}/x64/vc14/lib/"
@@ -103,9 +103,9 @@ LIBS += \
 
 # JPEG-TURBO
 contains(DEFINES, TURBOJPEG) {
-    # (sniyaz): You'll need to point this to your own libjpeg-turbo install.
-    INCLUDEPATH += "/usr/local/libjpeg-turbo/include/"
-    LIBS += "-L/usr/local/libjpeg-turbo/lib/"
+    # (sniyaz): You *may* need to point this to your own libjpeg-turbo install. Try the instructions on the repo and see.
+    INCLUDEPATH += "/usr/local/include/"
+    LIBS += "-L/usr/local/lib/"
     LIBS += -lturbojpeg
 }
 
