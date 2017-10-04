@@ -81,10 +81,9 @@ INCLUDEPATH += "$${TOP}/src"
 
 Debug:DBG_SUFFIX = "d"
 
-#OPENCVPATH="D:/opencv/opencv/build/install"
-OPENCVPATH="$${TOP}/deps/opencv-3.2.0"
+# (sniyaz): You'll need to point this to your own OpenCV install.
+OPENCVPATH="/usr/local/opencv"
 INCLUDEPATH += $${OPENCVPATH}/include/
-CV_SUFFIX=320$${DBG_SUFFIX}
 win32:contains(QMAKE_HOST.arch, x86_64) {
     LIBS += "-L$${OPENCVPATH}/x64/vc14/lib/"
 } else {
@@ -94,22 +93,19 @@ unix{
     LIBS += "-L$${OPENCVPATH}/lib/"
 }
 LIBS += \
-    -lopencv_calib3d$${CV_SUFFIX} \
-    -lopencv_core$${CV_SUFFIX} \
-    -lopencv_highgui$${CV_SUFFIX} \
-    -lopencv_imgcodecs$${CV_SUFFIX} \
-    -lopencv_imgproc$${CV_SUFFIX} \
-    -lopencv_videoio$${CV_SUFFIX} \
-    -lopencv_aruco$${CV_SUFFIX}
+    -lopencv_calib3d \
+    -lopencv_core \
+    -lopencv_highgui \
+    -lopencv_imgcodecs \
+    -lopencv_imgproc \
+    -lopencv_videoio \
+    -lopencv_aruco
 
 # JPEG-TURBO
 contains(DEFINES, TURBOJPEG) {
-    INCLUDEPATH += "$${TOP}/deps/libjpeg-turbo-1.5.1/libjpeg-turbo64/include/"
-    win32:contains(QMAKE_HOST.arch, x86_64) {
-        LIBS += "-L$${TOP}/deps/libjpeg-turbo-1.5.1/libjpeg-turbo64/lib/"
-    } else {
-        LIBS += "-L$${TOP}/deps/libjpeg-turbo-1.5.1/libjpeg-turbo32/lib/"
-    }
+    # (sniyaz): You'll need to point this to your own libjpeg-turbo install.
+    INCLUDEPATH += "/usr/local/libjpeg-turbo/include/"
+    LIBS += "-L/usr/local/libjpeg-turbo/lib/"
     LIBS += -lturbojpeg
 }
 
