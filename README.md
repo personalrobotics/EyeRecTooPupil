@@ -32,7 +32,10 @@ Also remember that you’ll need Qt 5.7.0 to actually build and run EyeRecToo, j
 
 Once you’ve finished the above, you just need to add the locations of your openCV and libjpeg-turbo 
 to your $LD_LIBRARY_PATH environment variable. You also need to run the built EyeRecToo executable 
-with **sudo** so libusb can actually read the USB device names- otherwise, things won’t work
+with **sudo** so libusb can actually read the USB device names- otherwise, things won’t work.
+
+Also, you might see two entries for each Pupil Camera (so 6 total). Don’t freak over this. One of the 
+two entries uses GStreamer, and will probably crash. The other one is using the UVC Engine. Pick that one.
 
 *Both Release and Debug versions are functional although the latter may run at a low sampling rates.*
 
