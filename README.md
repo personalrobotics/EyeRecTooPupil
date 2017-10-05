@@ -30,10 +30,12 @@ This can be a little tricky. EyeRecToo requires OpenCV to be built and installed
 In addition, building with the extra modules seems to be broken on Master for OpenCV at the time of writing (10/4/17). 
 
 First, download version 3.2.0 of OpenCV and the extra modules from these URLs:
-OpenCV 3.2.0: https://github.com/opencv/opencv/releases/tag/3.2.0
-OpenCV 3.2.0 Extra Modules: https://github.com/opencv/opencv_contrib/releases/tag/3.2.0
 
-Now extract both zip files in the same location (i.e. your home folder). Follow these steps:
+**OpenCV 3.2.0:** https://github.com/opencv/opencv/releases/tag/3.2.0
+
+**OpenCV 3.2.0 Extra Modules:** https://github.com/opencv/opencv_contrib/releases/tag/3.2.0
+
+Now extract both zip files in the same location (i.e. your home folder). After that, follow these steps:
 
 `cd opencv-3.2.0`
 
@@ -68,7 +70,8 @@ Much simpler. From the Pupil Linux docs:
 `sudo ldconfig`
 
 **Note**: You may need to edit the .pro file to point to the install locations of these dependencies. 
-Assuming you start from scratch and follow these directions, you shouldn't have to.
+Assuming you start from scratch and follow these directions, you shouldn't have to (unless they somehow end up
+in wierd locations).
 
 ## Running
 
