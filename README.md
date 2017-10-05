@@ -75,6 +75,8 @@ in wierd locations).
 
 ## Running
 
+Now, actually build EyeRecToo (qmake with QT and the .pro file, and then the standard make command).
+
 Once you’ve finished the above, you just need to add the locations of your openCV and libjpeg-turbo 
 to your $LD_LIBRARY_PATH environment variable. You also need to run the built EyeRecToo executable 
 with **sudo** so libusb can actually read the USB device names- otherwise, things won’t work.
