@@ -128,6 +128,8 @@ LIBS += -lmessage_filters
 LIBS += -lclass_loader
 LIBS += -lroslib
 LIBS += -lrospack
+LIBS += -lcv_bridge
+
 
 contains(DEFINES, STARBURST) {
     SOURCES += $${TOP}/pupil-detection/Starburst.cpp
