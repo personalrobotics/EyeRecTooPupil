@@ -9,6 +9,9 @@
 
 #include "utils.h"
 
+#include "ros/ros.h"
+#include "image_transport/image_transport.h"
+
 class NetworkStream : public QObject
 {
     Q_OBJECT
@@ -28,6 +31,8 @@ private:
     QAbstractSocket *socket;
     QString ip;
     int port;
+    // We use ROS to send out images.
+    image_transport::Publisher imPublisher;
 };
 
 #endif // NETWORKSTREAM_H

@@ -1,6 +1,4 @@
 #include "NetworkStream.h"
-#include "ros/ros.h"
-#include "image_transport/image_transport.h"
 
 
 NetworkStream::NetworkStream(QObject *parent)
@@ -15,6 +13,11 @@ NetworkStream::~NetworkStream()
 {
     if (socket)
         stop();
+
+    // Set up the publisher we will use to get gaze data in ROS.
+    ros::NodeHandle nh;
+    image_transport::ImageTransport it(nh);
+    imPublisher = it.advertise("EyeRecTooImage", 1);
 }
 
 void NetworkStream::start(int port, QString ip)

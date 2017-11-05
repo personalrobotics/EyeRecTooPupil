@@ -124,6 +124,10 @@ LIBS += -lrostime
 LIBS += -lxmlrpcpp
 LIBS += -lcpp_common
 LIBS += -limage_transport
+LIBS += -lmessage_filters
+LIBS += -lclass_loader
+LIBS += -lroslib
+LIBS += -lrospack
 
 contains(DEFINES, STARBURST) {
     SOURCES += $${TOP}/pupil-detection/Starburst.cpp
