@@ -9,6 +9,8 @@
 
 #include "utils.h"
 
+#include "ros/ros.h"
+
 void makeFolders()
 {
     gCfgDir = gExeDir + "/cfg";
@@ -21,6 +23,9 @@ void makeFolders()
 
 int main(int argc, char *argv[])
 {
+    // Init ROS.
+    ros::init(argc, argv, "EyeRecToo");
+
     gExeDir = QDir::currentPath();
 
     // Makes sure the binary deployment can find the uvc engine

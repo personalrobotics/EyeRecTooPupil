@@ -107,7 +107,23 @@ contains(DEFINES, TURBOJPEG) {
     INCLUDEPATH += "/usr/local/include/"
     LIBS += "-L/usr/local/lib/"
     LIBS += -lturbojpeg
+    LIBS += -lturbojpeg
 }
+
+# ROS
+# (sniyaz): For publishing images to use.
+INCLUDEPATH += "/opt/ros/indigo/include"
+LIBS += "-L/opt/ros/indigo/lib/"
+LIBS += -lroscpp
+LIBS += -lrosconsole
+LIBS += -lrosconsole_backend_interface
+LIBS += -lrosconsole_bridge
+LIBS += -lrosconsole_log4cxx
+LIBS += -lroscpp_serialization
+LIBS += -lrostime
+LIBS += -lxmlrpcpp
+LIBS += -lcpp_common
+LIBS += -limage_transport
 
 contains(DEFINES, STARBURST) {
     SOURCES += $${TOP}/pupil-detection/Starburst.cpp
