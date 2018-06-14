@@ -55,7 +55,9 @@ This will build and install OpenCV 3.2.0 with the extra modules.
 
 ## Installing libjpeg-turbo
 
-Much simpler. From the Pupil Linux docs:
+Much simpler. Install the nasm compiler first: 
+`sudo apt-get install nasm`
+From the Pupil Linux docs:
 
 `wget -O libjpeg-turbo.tar.gz https://sourceforge.net/projects/libjpeg-turbo/files/1.5.1/libjpeg-turbo-1.5.1.tar.gz/download`
 
